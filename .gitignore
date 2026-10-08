@@ -4,3 +4,5 @@ artifacts/
 .venv/
 allure-results/
 allure-report/
+.env
+screenshots/
