@@ -110,6 +110,10 @@ def run_case(case: dict, browser: str, pause_seconds: float) -> None:
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="Run visible Selenium login cases from Excel")
     parser.add_argument("--case", help="Run one test case ID; default runs all cases")
     parser.add_argument("--browser", choices=["chrome", "edge"], default="chrome")
