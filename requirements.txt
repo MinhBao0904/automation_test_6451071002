@@ -1,2 +1,4 @@
 selenium>=4.20,<5
 openpyxl>=3.1,<4
+pytest>=8,<10
+allure-pytest>=2.13,<3
