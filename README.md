@@ -45,6 +45,12 @@ allure generate allure-results --clean -o allure-report
 allure open allure-report
 ```
 
+Nếu đã có Node.js và Java nhưng chưa cài Allure CLI toàn máy, có thể dùng npx:
+
+```powershell
+npx --yes --package=allure-commandline allure generate allure-results --clean -o allure-report
+```
+
 Allure Pytest tạo dữ liệu kết quả; Allure CLI chuyển dữ liệu đó thành report HTML. Cài CLI trên Windows có thể dùng `scoop install allure`; xem [hướng dẫn cài Allure cho Windows](https://allurereport.org/docs/v2/install-for-windows/).
 
 ## Các test case không cần tài khoản
