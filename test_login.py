@@ -52,6 +52,16 @@ def get_cases():
     return [dict(zip(HEADERS, row)) for row in rows if row[0]]
 
 
+def set_case_status(case_id: str, status: str) -> None:
+    workbook = load_workbook(CASE_FILE)
+    sheet = workbook["Login"]
+    for row in range(2, sheet.max_row + 1):
+        if sheet.cell(row, 1).value == case_id:
+            sheet.cell(row, 10).value = status
+            break
+    workbook.save(CASE_FILE)
+
+
 def make_driver(browser: str):
     if browser == "edge":
         options = webdriver.EdgeOptions()
@@ -128,8 +138,10 @@ def main() -> int:
     for case in selected:
         try:
             run_case(case, args.browser, args.pause)
+            set_case_status(case["Test Case ID"], "Passed")
         except Exception as error:
             failed += 1
+            set_case_status(case["Test Case ID"], "Failed")
             print(f"{type(error).__name__}: {error}", file=sys.stderr)
     print(f"Kết quả: {len(selected) - failed} passed, {failed} failed")
     return 1 if failed else 0
