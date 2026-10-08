@@ -127,7 +127,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run visible Selenium login cases from Excel")
     parser.add_argument("--case", help="Run one test case ID; default runs all cases")
     parser.add_argument("--browser", choices=["chrome", "edge"], default="chrome")
-    parser.add_argument("--pause", type=float, default=2.0, help="Seconds to leave each result visible")
+    parser.add_argument("--pause", type=float, default=5.0, help="Seconds to leave each result visible")
     args = parser.parse_args()
     cases = get_cases()
     selected = [case for case in cases if not args.case or case["Test Case ID"] == args.case]
